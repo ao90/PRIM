@@ -4,7 +4,7 @@ Implementation of the Patient Rule Induction Method (PRIM)...
 
  
  
- ## Installation
+ # Installation
  
  You can install the latest version from
  [Github](https://github.com/ao90/PRIM)
