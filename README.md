@@ -4,26 +4,26 @@ Implementation of the Patient Rule Induction Method (PRIM)...
 
  
  
- # Installation
+## Installation
  
- You can install the latest version from
- [Github](https://github.com/ao90/PRIM)
+You can install the latest version from
+[Github](https://github.com/ao90/PRIM)
  
- ```s
- # install.packages("devtools")
- library(devtools)
- install_github("ao90/PRIM") 
- ```
+```s
+# install.packages("devtools")
+library(devtools)
+install_github("ao90/PRIM") 
+```
  
- ## Usage
+## Usage
  
- ```s
- library(PRIM)
+```s
+library(PRIM)
  
- # blablabla
+# blablabla
  
- ```
+```
  
- ## License
+## License
  
 This package is free and open source software, licensed under GPL (>= 3).
