@@ -1,0 +1,15 @@
+Package: PRIM
+Type: Package
+Title: Patient Rule Induction Method (PRIM)
+Version: 0.1
+Date: 2016-05-16
+Author: Armin Ott [aut, cre]
+Maintainer: Armin Ott <armin-ott@freenet.de>
+Imports:
+    survival
+Description: This Package implements the Patient Rule Induction Method as
+    sugessted by Friedman and Fisher (1999).
+License: GPL (>= 3)
+LazyData: TRUE
+RoxygenNote: 5.0.1
+
