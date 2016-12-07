@@ -25,7 +25,7 @@
 #' @return \item{data_orig}{original dataset that is used (extracted from \code{fixbox}).}
 #'
 #'
-#' @references Friedman, J. H. and Fisher, N. I., 'Bump hunting in high-dimensional data', Statistics and Computing \bold{9}, 123-143
+#' @references Friedman, J. H. and Fisher, N. I., 'Bump hunting in high-dimensional data', Statistics and Computing \bold{9} (2) (1999), 123-143
 #'
 #' @examples
 #' # generating random data:

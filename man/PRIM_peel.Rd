@@ -45,7 +45,7 @@ For each variable with missing values (only if \code{use_NAs = TRUE}) there is a
 \item{data_orig}{original dataset that is used for the peeling.}
 }
 \description{
-This function is an implementation of the simple (singular) Peeling-Algorithm as suggested by Friedman and Fisher (1999). In each iteration the fraction alpha is peeled from one edge of the current box.
+This function is an implementation of the (singular) Peeling-Algorithm as suggested by Friedman and Fisher (1999). In each iteration the fraction alpha is peeled from one edge of the current box.
 }
 \details{
 The outcome of the \code{formula} can either be numeric, logical or a survival object (see \code{\link{Surv}}). If it is a survival object the \code{target} is set to the number of events per amount of time.
@@ -73,6 +73,6 @@ prim$box # box definitions
 
 }
 \references{
-Friedman, J. H. and Fisher, N. I., 'Bump hunting in high-dimensional data', Statistics and Computing \bold{9}, 123-143
+Friedman, J. H. and Fisher, N. I., 'Bump hunting in high-dimensional data', Statistics and Computing \bold{9} (2) (1999), 123-143
 }
 

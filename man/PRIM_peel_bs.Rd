@@ -51,7 +51,7 @@ For each variable with missing values (only if \code{use_NAs = TRUE}) there is a
 \item{data_orig}{original dataset that is used for the peeling.}
 }
 \description{
-This function is an implementation of the multiple Peeling-Algorithm as suggested by Friedman and Fisher (1999). The simple peeling function \code{\link{PRIM_peel}} is repeated for different alpha's and bootstrap samples out of the original data.
+This function is an implementation of the multiple Peeling-Algorithm as suggested by Friedman and Fisher (1999). The singular peeling function \code{\link{PRIM_peel}} is repeated for different alpha's and bootstrap samples out of the original data.
 }
 \details{
 The outcome of the \code{formula} can either be numeric, logical or a survival object (see \code{\link{Surv}}). If it is a survival object the \code{target} is set to the number of events per amount of time.
@@ -74,13 +74,13 @@ plot(dat$x1, dat$x2, col=dat$y+1, pch=16)
 remove(x1, x2, x3, y, wsk, cat, n)
 
 # apply the PRIM_peel_bs function:
-prim <- PRIM_peel_bs(formula=y ~ ., data=dat, beta_min = .01, peel_alpha = c(.025, .05, .1, .2, .4), B = 5)
+prim <- PRIM_peel_bs(formula=y ~ ., data=dat, beta_min = .01)
 plot(prim) # multiple trajectory
 head(prim$box) # box definitions
 
 }
 \references{
-Friedman, J. H. and Fisher, N. I., 'Bump hunting in high-dimensional data', Statistics and Computing \bold{9}, 123-143
+Friedman, J. H. and Fisher, N. I., 'Bump hunting in high-dimensional data', Statistics and Computing \bold{9} (2) (1999), 123-143
 }
 \seealso{
 \code{\link{remove_dominated}}, \code{\link{PRIM_peel}}, \code{\link{PRIM_paste}}, \code{\link{PRIM}}

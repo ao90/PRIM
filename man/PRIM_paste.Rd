@@ -67,6 +67,6 @@ head(cbind(paste$box, paste$f, paste$beta))
 
 }
 \references{
-Friedman, J. H. and Fisher, N. I., 'Bump hunting in high-dimensional data', Statistics and Computing \bold{9}, 123-143
+Friedman, J. H. and Fisher, N. I., 'Bump hunting in high-dimensional data', Statistics and Computing \bold{9} (2) (1999), 123-143
 }
 

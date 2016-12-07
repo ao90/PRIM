@@ -2,7 +2,7 @@
 #'
 #' @import survival
 #'
-#' @description This function is an implementation of the multiple Peeling-Algorithm as suggested by Friedman and Fisher (1999). The simple peeling function \code{\link{PRIM_peel}} is repeated for different alpha's and bootstrap samples out of the original data.
+#' @description This function is an implementation of the multiple Peeling-Algorithm as suggested by Friedman and Fisher (1999). The singular peeling function \code{\link{PRIM_peel}} is repeated for different alpha's and bootstrap samples out of the original data.
 #'
 #'
 #' @param formula an object of class "\code{\link{formula}}" with a response but no interaction terms.
@@ -37,7 +37,7 @@
 #'
 #' @seealso \code{\link{remove_dominated}}, \code{\link{PRIM_peel}}, \code{\link{PRIM_paste}}, \code{\link{PRIM}}
 #'
-#' @references Friedman, J. H. and Fisher, N. I., 'Bump hunting in high-dimensional data', Statistics and Computing \bold{9}, 123-143
+#' @references Friedman, J. H. and Fisher, N. I., 'Bump hunting in high-dimensional data', Statistics and Computing \bold{9} (2) (1999), 123-143
 #'
 #' @examples
 #' # generating random data:
@@ -54,7 +54,7 @@
 #' remove(x1, x2, x3, y, wsk, cat, n)
 #'
 #' # apply the PRIM_peel_bs function:
-#' prim <- PRIM_peel_bs(formula=y ~ ., data=dat, beta_min = .01, peel_alpha = c(.025, .05, .1, .2, .4), B = 5)
+#' prim <- PRIM_peel_bs(formula=y ~ ., data=dat, beta_min = .01)
 #' plot(prim) # multiple trajectory
 #' head(prim$box) # box definitions
 #'

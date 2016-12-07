@@ -2,7 +2,7 @@
 #'
 #' @import survival
 #'
-#' @description This function is an implementation of the simple (singular) Peeling-Algorithm as suggested by Friedman and Fisher (1999). In each iteration the fraction alpha is peeled from one edge of the current box.
+#' @description This function is an implementation of the (singular) Peeling-Algorithm as suggested by Friedman and Fisher (1999). In each iteration the fraction alpha is peeled from one edge of the current box.
 #'
 #' @param formula an object of class "\code{\link{formula}}" with a response but no interaction terms.
 #' It indicates the response over which the target function should be maximized and the covariates that are used for the later box definitions.
@@ -32,7 +32,7 @@
 #' @return \item{data_orig}{original dataset that is used for the peeling.}
 #'
 #'
-#' @references Friedman, J. H. and Fisher, N. I., 'Bump hunting in high-dimensional data', Statistics and Computing \bold{9}, 123-143
+#' @references Friedman, J. H. and Fisher, N. I., 'Bump hunting in high-dimensional data', Statistics and Computing \bold{9} (2) (1999), 123-143
 #'
 #' @examples
 #' # generating random data:
