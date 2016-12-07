@@ -1,5 +1,5 @@
 # PRIM package
-Implementation of the Patient Rule Induction Method (PRIM)...
+Implementation of the Patient Rule Induction Method (PRIM) as suggested by Friedman and Fisher (1999) in R
 
 
  
