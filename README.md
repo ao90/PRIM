@@ -1,5 +1,5 @@
 # PRIM package
-Implementation of the Patient Rule Induction Method (PRIM) as suggested by Friedman and Fisher (1999) in R
+Implementation of the Patient Rule Induction Method (PRIM) as suggested by Friedman and Fisher (1999) in R.
 
 
  
@@ -17,6 +17,10 @@ install_github("ao90/PRIM")
  
 ## Usage
  
+### Documentations: 
+ For function documentations see manual (https://github.com/ao90/PRIM/blob/master/PRIM-manual.pdf).
+ 
+### Example:
 ```s
 library(PRIM)
  
