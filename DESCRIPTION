@@ -2,7 +2,7 @@ Package: PRIM
 Type: Package
 Title: Patient Rule Induction Method (PRIM)
 Version: 1.0
-Date: 2016-05-16
+Date: 2017-05-23
 Author: Armin Ott [aut, cre]
 Maintainer: Armin Ott <armin-ott@freenet.de>
 Imports:
