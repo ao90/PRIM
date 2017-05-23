@@ -80,7 +80,7 @@ cat <- as.factor(sample(c("a","b","c", "d"), size = n, replace = TRUE))
 wsk <- (1-sqrt(x1^2+x2^2)/sqrt(2))
 y <- as.logical(rbinom(n = n, prob = wsk, size = 1))
 dat <- cbind.data.frame(y, x1, x2, x3, cat)
-plot(dat$x1, dat$x2, col=dat$y+1, pch=16)
+#plot(dat$x1, dat$x2, col=dat$y+1, pch=16)
 remove(x1, x2, x3, y, wsk, cat, n)
 
 # apply the PRIM function to find the best boxes with a support of at least 0.1:
