@@ -1,0 +1,14 @@
+citHeader("To cite package 'PRIM' in publications use:")
+
+
+
+citEntry(entry="article",
+    title = {"Nonparametric Subgroup Identification by {PRIM} and {CART}: A Simulation and Application Study"},
+    author = {"Armin Ott and Alexander Hapfelmeier"},
+    year = {"2017"},
+    pages={"17 pages"},
+    volume={"vol. 2017"},
+    journal = {"Computational and Mathematical Methods in Medicine"},
+    note = {"{A}rticle ID 5271091"},
+
+    textVersion = "Armin Ott and Alexander Hapfelmeier, Nonparametric Subgroup Identification by PRIM and CART: A Simulation and Application Study, Computational and Mathematical Methods in Medicine, vol. 2017, Article ID 5271091, 17 pages, 2017.")
