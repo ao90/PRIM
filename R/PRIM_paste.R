@@ -25,7 +25,7 @@
 #' @return \item{data_orig}{original dataset that is used (extracted from \code{fixbox}).}
 #'
 #'
-#' @references Friedman, J. H. and Fisher, N. I., 'Bump hunting in high-dimensional data', Statistics and Computing \bold{9} (2) (1999), 123-143
+#' @references Friedman, J. H. and Fisher, N. I., 'Bump hunting in high-dimensional data', Statistics and Computing 9 (2) (1999), 123-143
 #'
 #' Ott, A. and Hapfelmeier, A., 'Nonparametric Subgroup Identification by PRIM and CART: A Simulation and Application Study', Computational and Mathematical Methods in Medicine, vol. 2017 (2017), 17 pages, Article ID 5271091
 #' @examples
