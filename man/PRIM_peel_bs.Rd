@@ -20,9 +20,9 @@ It indicates the response over which the target function should be maximized and
 
 \item{beta_min}{minimum support that one Box should have (stop-criterion).}
 
-\item{target}{target-function to be maximized.}
+\item{target}{target-function to be maximized. In most cases the mean is a useful target, although other functions like e.g. the median are also possible here.}
 
-\item{alter_crit}{logical. If \code{TRUE} the alternative criterion is used for peeling.}
+\item{alter_crit}{logical. If \code{TRUE} the alternative criterion is used for peeling. I.e. "target/beta" is maximized during peeling instead of "target", so that large subboxes are not prefered to be peeled off. This is important especially in case of nominal covariates.}
 
 \item{use_NAs}{logical. If \code{TRUE} observations with missing values are included in the analysis.}
 

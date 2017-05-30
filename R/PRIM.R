@@ -11,12 +11,12 @@
 #' It indicates the response over which the target function should be maximized and the covariates that are used for the later box definitions.
 #' @param data an object of class \code{\link{data.frame}} containing the variables named in the formula.
 #' @param f_min minimum target the final box must have. From all boxes, that fulfill this criterion, the one with the biggest support is taken after the peeling. If this argument is missing the box with the biggest target having at least a support of \code{beta_min} is taken.
-#' @param beta_min minimum support that one Box must have.
+#' @param beta_min minimum support that one box must have. This proportion always refers to the whole data set.
 #' @param max_boxes maximum number of boxes to be found.
 #' @param peel_alpha vector of a sequence of different alpha-fractions used for the peelings.
 #' @param B number of bootstrap samples on which the peeling is applied to for each alpha. For \code{B = 0} no bootstraps are created.
-#' @param target target-function to be maximized.
-#' @param alter_crit logical. If \code{TRUE} the alternative criterion is used for peeling.
+#' @param target target-function to be maximized. In most cases the mean is a useful target, although other functions like e.g. the median are also possible here.
+#' @param alter_crit logical. If \code{TRUE} the alternative criterion is used for peeling. I.e. "target/beta" is maximized during peeling instead of "target", so that large subboxes are not prefered to be peeled off. This is important especially in case of nominal covariates.
 #' @param use_NAs logical. If \code{TRUE} observations with missing values are included in the analysis.
 #' @param seed seed to be set before the first iteration. Only useful for \code{B > 0}.
 #' @param print_position logical. If \code{TRUE} the current position of the algorithm is printed out.
@@ -32,7 +32,9 @@
 #' From the peeling output the box defined by \code{beta_min} and \code{f_min} is chosen.
 #' After that the pasting function seeks for boxes with bigger supports and bigger targets and takes the one with the highest target function within the box.
 #'
-#' @return \code{PRIM} returns an object of class "\code{prim}", which is a list containing at least the following components:
+#' The function can also cope with survival outcomes (\code{Surv}-object). Therefore the hazard rate is used as target function as suggested in Ott and Hapfelmeier (2017). The value of the input parameter \code{target} is ignored in this case.
+#'
+#' @return \code{PRIM} returns an object of class "\code{prim}", which is a list containing the following components:
 #' \item{f}{vector of the target functions evaluated on each box. The last element is the target of all observations not lying in a box.}
 #' \item{beta}{vector of the supports of each box. The last element is the fraction of observations not lying in a box.}
 #' \item{box}{a \code{\link{data.frame}} defining the borders of the boxes. Each row belongs to one box. The columns with "\code{min.}" and "\code{max.}" describe the lower and upper boundaries of the at least ordinal covariates. Therefore the value taken is the last one that is \bold{not} included in the current box.
@@ -76,12 +78,15 @@
 
 
 
-PRIM <- function(formula, data, f_min, beta_min = 0.2, max_boxes = Inf, peel_alpha = seq(0.01, 0.4, 0.03), B = 0, target = mean, alter_crit = TRUE, use_NAs = TRUE, seed, print_position = TRUE, paste_alpha = 0.01, max_steps = 50, stop_by_dec = TRUE){
+PRIM <- function(formula, data, f_min, beta_min = 0.2, max_boxes = Inf, peel_alpha = seq(0.01, 0.4, 0.03), B = 0, target = mean, alter_crit = TRUE, use_NAs = TRUE, seed, print_position = FALSE, paste_alpha = 0.01, max_steps = 50, stop_by_dec = TRUE){
+
 
   if(use_NAs==FALSE) {data <- na.omit(data)}
   row.names(data) <- 1:nrow(data)
   # use the events per time as target, if the response is a survival object
   if(is.Surv(model.frame(formula, data=data)[,1])) target <- function(k) sum(k[,2])/sum(k[,1])
+
+  if(!missing(f_min)) if(f_min <= target(data[,1])) stop("no box can be found if f_min <= 'overall target'")
 
   if(!missing(seed)) set.seed(seed)
 
@@ -139,6 +144,11 @@ PRIM <- function(formula, data, f_min, beta_min = 0.2, max_boxes = Inf, peel_alp
 
     # which observations should be removed after each step (covering)
     remove_obs[[i+1]] <- c(remove_obs[[i]], as.numeric(row.names(fixboxes[[i]]$data_orig))[fixboxes[[i]]$subset])
+
+    if(nrow(data[-(remove_obs[[i+1]]),]) < 2){
+      last <- 0
+      break
+    }
 
     i <- i+1
   }
