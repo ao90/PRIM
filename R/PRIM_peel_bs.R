@@ -11,8 +11,8 @@
 #' @param peel_alpha vector of a sequence of different alpha-fractions used for the peelings.
 #' @param B number of bootstrap samples on which the peeling is applied to for each alpha. For \code{B = 0} no bootstraps are created.
 #' @param beta_min minimum support that one Box should have (stop-criterion).
-#' @param target target-function to be maximized.
-#' @param alter_crit logical. If \code{TRUE} the alternative criterion is used for peeling.
+#' @param target target-function to be maximized. In most cases the mean is a useful target, although other functions like e.g. the median are also possible here.
+#' @param alter_crit logical. If \code{TRUE} the alternative criterion is used for peeling. I.e. "target/beta" is maximized during peeling instead of "target", so that large subboxes are not prefered to be peeled off. This is important especially in case of nominal covariates.
 #' @param use_NAs logical. If \code{TRUE} observations with missing values are included in the analysis.
 #' @param seed seed to be set before the first iteration. Only useful for \code{B > 0}.
 #' @param print_position logical. If \code{TRUE} the current position of the algorithm is printed out.

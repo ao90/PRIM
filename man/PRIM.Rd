@@ -6,7 +6,7 @@
 \usage{
 PRIM(formula, data, f_min, beta_min = 0.2, max_boxes = Inf,
   peel_alpha = seq(0.01, 0.4, 0.03), B = 0, target = mean,
-  alter_crit = TRUE, use_NAs = TRUE, seed, print_position = TRUE,
+  alter_crit = TRUE, use_NAs = TRUE, seed, print_position = FALSE,
   paste_alpha = 0.01, max_steps = 50, stop_by_dec = TRUE)
 }
 \arguments{
@@ -17,7 +17,7 @@ It indicates the response over which the target function should be maximized and
 
 \item{f_min}{minimum target the final box must have. From all boxes, that fulfill this criterion, the one with the biggest support is taken after the peeling. If this argument is missing the box with the biggest target having at least a support of \code{beta_min} is taken.}
 
-\item{beta_min}{minimum support that one Box must have.}
+\item{beta_min}{minimum support that one box must have. This proportion always refers to the whole data set.}
 
 \item{max_boxes}{maximum number of boxes to be found.}
 
@@ -25,9 +25,9 @@ It indicates the response over which the target function should be maximized and
 
 \item{B}{number of bootstrap samples on which the peeling is applied to for each alpha. For \code{B = 0} no bootstraps are created.}
 
-\item{target}{target-function to be maximized.}
+\item{target}{target-function to be maximized. In most cases the mean is a useful target, although other functions like e.g. the median are also possible here.}
 
-\item{alter_crit}{logical. If \code{TRUE} the alternative criterion is used for peeling.}
+\item{alter_crit}{logical. If \code{TRUE} the alternative criterion is used for peeling. I.e. "target/beta" is maximized during peeling instead of "target", so that large subboxes are not prefered to be peeled off. This is important especially in case of nominal covariates.}
 
 \item{use_NAs}{logical. If \code{TRUE} observations with missing values are included in the analysis.}
 
@@ -42,7 +42,7 @@ It indicates the response over which the target function should be maximized and
 \item{stop_by_dec}{logical. If \code{TRUE} the pasting stops if the target at one step is lower than the target of the last step.}
 }
 \value{
-\code{PRIM} returns an object of class "\code{prim}", which is a list containing at least the following components:
+\code{PRIM} returns an object of class "\code{prim}", which is a list containing the following components:
 \item{f}{vector of the target functions evaluated on each box. The last element is the target of all observations not lying in a box.}
 \item{beta}{vector of the supports of each box. The last element is the fraction of observations not lying in a box.}
 \item{box}{a \code{\link{data.frame}} defining the borders of the boxes. Each row belongs to one box. The columns with "\code{min.}" and "\code{max.}" describe the lower and upper boundaries of the at least ordinal covariates. Therefore the value taken is the last one that is \bold{not} included in the current box.
@@ -68,6 +68,8 @@ This iteration stops if either \code{max_boxes} is reached or if the target func
 In each iteration step this function does a multiple peeling characterized by the sequenz \code{alpha_peel} and \code{B}.
 From the peeling output the box defined by \code{beta_min} and \code{f_min} is chosen.
 After that the pasting function seeks for boxes with bigger supports and bigger targets and takes the one with the highest target function within the box.
+
+The function can also cope with survival outcomes (\code{Surv}-object). Therefore the hazard rate is used as target function as suggested in Ott and Hapfelmeier (2017). The value of the input parameter \code{target} is ignored in this case.
 }
 \examples{
 # generating random data:
